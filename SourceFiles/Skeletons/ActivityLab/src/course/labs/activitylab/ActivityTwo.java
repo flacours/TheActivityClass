@@ -1,6 +1,7 @@
 package course.labs.activitylab;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,12 +48,9 @@ public class ActivityTwo extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				// TODO:
 				// This function closes Activity Two
 				// Hint: use Context's finish() method
-
-
-			
+               ActivityTwo.this.finish();
 			}
 		});
 
@@ -62,22 +60,20 @@ public class ActivityTwo extends Activity {
 			// TODO:
 			// Restore value of counters from saved state
 			// Only need 4 lines of code, one for every count variable
-
-
-
+            mCreate = savedInstanceState.getInt("mCreate");
+            mStart = savedInstanceState.getInt("mStart");
+            mResume = savedInstanceState.getInt("mResume");
+            mRestart = savedInstanceState.getInt("mRestart");
 		}
 
-		// TODO: Emit LogCat message
-
+		// Emit LogCat message
+        Log.i(TAG, "onCreate()");
 
 
 		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface via the displayCounts() method
-
-
-
-
+        displayCounts();
 	}
 
 	// Lifecycle callback methods overrides
@@ -87,87 +83,60 @@ public class ActivityTwo extends Activity {
 		super.onStart();
 
         Log.i(TAG, "Entered the onStart() method");
-
-
-		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
-
-
-
+        mStart++;
+        displayCounts();
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-
         Log.i(TAG, "Entered the onResume() method");
-
-
-		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
-
-
-
-
+        mResume++;
+        displayCounts();
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
-
         Log.i(TAG, "Entered the onPause() method");
-
-
-
 	}
 
 	@Override
 	public void onStop() {
 		super.onStop();
-
         Log.i(TAG, "Entered the onStop() method");
-
-
-
 	}
 
 	@Override
 	public void onRestart() {
 		super.onRestart();
-
         Log.i(TAG, "Entered the onRestart() method");
-
-
-		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface
-
-
-
+        mRestart++;
+        displayCounts();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-
         Log.i(TAG, "Entered the onDestroy() method");
-
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
 
-		// TODO:
 		// Save counter state information with a collection of key-value pairs
 		// 4 lines of code, one for every count variable
-
-
-
-
-
-	
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("mCreate", mCreate);
+        savedInstanceState.putInt("mStart", mStart);
+        savedInstanceState.putInt("mResume", mResume);
+        savedInstanceState.putInt("mRestart", mRestart);
 	}
 
 	// Updates the displayed counters
@@ -177,6 +146,5 @@ public class ActivityTwo extends Activity {
 		mTvStart.setText("onStart() calls: " + mStart);
 		mTvResume.setText("onResume() calls: " + mResume);
 		mTvRestart.setText("onRestart() calls: " + mRestart);
-	
 	}
 }
