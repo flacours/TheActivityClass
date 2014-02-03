@@ -37,6 +37,7 @@ public class ActivityTwo extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_two);
 
+
         mTvCreate = (TextView) findViewById(R.id.create);
         mTvStart = (TextView) findViewById(R.id.start);
         mTvResume = (TextView) findViewById(R.id.resume);
@@ -67,10 +68,9 @@ public class ActivityTwo extends Activity {
 		}
 
 		// Emit LogCat message
-        Log.i(TAG, "onCreate()");
+        Log.i(TAG, "Entered the onCreate() method");
+        mCreate++;
 
-
-		// TODO:
 		// Update the appropriate count variable
 		// Update the user interface via the displayCounts() method
         displayCounts();

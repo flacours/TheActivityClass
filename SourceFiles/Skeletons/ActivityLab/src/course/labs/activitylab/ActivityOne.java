@@ -71,8 +71,8 @@ public class ActivityOne extends Activity {
 		}
 
 		// Emit LogCat message
-        Log.i(TAG, "onCreate()");
-
+        Log.i(TAG, "Entered the onCreate() method");
+        mCreate++;
 		// Update the appropriate count variable
 		// Update the user interface via the displayCounts() method
          displayCounts();
@@ -115,7 +115,7 @@ public class ActivityOne extends Activity {
 	public void onRestart() {
 		super.onRestart();
 
-        Log.i(TAG, "Entered the onStart method");
+        Log.i(TAG, "Entered the onRestart() method");
         mRestart++;
         displayCounts();
 	}
